@@ -53,15 +53,7 @@ class Solution {
         return num;
     }
 
-//    public int twoSplit(int[] nums, int target, int start, int end, int mid){
-//        if (target == nums[mid]){
-//            return target;
-//        }else if (target > nums[mid]){
-//            mid = (mid + end) /2;
-//        }else {
-//            mid = (start + mid) / 2;
-//        }
-//    }
+
 }
 //leetcode submit region end(Prohibit modification and deletion)
 
