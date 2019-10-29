@@ -42,15 +42,38 @@ public class P35SearchInsertPosition{
 class Solution {
     public int searchInsert(int[] nums, int target) {
         // 暴力遍历法
-        int num = 0;
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] >= target){
-                return i;
-            }else if (nums[i] < target){
-                num = i + 1;
+//        int num = 0;
+//        for (int i = 0; i < nums.length; i++) {
+//            if (nums[i] >= target){
+//                return i;
+//            }else if (nums[i] < target){
+//                num = i + 1;
+//            }
+//        }
+//        return num;
+
+        // 二分法
+        int len = nums.length;
+        if (len == 0){
+            return 0;
+        }
+        if (target > nums[len - 1]){
+            return len;
+        }
+        int left = 0;
+        int right = len;
+        // 退出循环时，必定有 left == right
+        while (left < right){
+            // 无符号右移，即使 left + right > Integer.MAX_VALUE 也不影响
+            // 取的是左中位数，所以要保证循环中 left 的值会发生变化，即 left = mid + 1，否则可能会出现死循环
+            int mid = (left + right) >>> 1;
+            if (nums[mid] < target){
+                left = mid + 1;
+            }else {
+                right = mid;
             }
         }
-        return num;
+        return left;
     }
 
 
